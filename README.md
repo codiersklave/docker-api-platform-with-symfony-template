@@ -1,4 +1,11 @@
-# Docker / Apache 2 / PHP 8 / MySQL 8 / Symfony 5
+# Highland Park
+
+* Docker
+* Apache 2
+* PHP 8
+* MySQL 8
+* Symfony 5
+* API Platform
 
 ## Description
 
