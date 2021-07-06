@@ -41,7 +41,9 @@
     "symfony/expression-language": "5.2.*",
     "composer/package-versions-deprecated": "1.11.99.2",
     "symfony/proxy-manager-bridge": "5.2.*",
-    "symfony/twig-bundle": "5.2.*"
+    "symfony/twig-bundle": "5.2.*",
+    "netresearch/jsonmapper": "^4.0",
+    "ramsey/uuid": "^4.1"
   },
   "require-dev": {
     "doctrine/doctrine-fixtures-bundle": "^3.3.0",
