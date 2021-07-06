@@ -34,7 +34,14 @@
     "phpdocumentor/reflection-docblock": "^5.2",
     "symfony/property-access": "5.2.*",
     "symfony/property-info": "5.2.*",
-    "symfony/serializer": "5.2.*"
+    "symfony/serializer": "5.2.*",
+    "api-platform/core": "^2.6",
+    "nelmio/cors-bundle": "^2.1",
+    "symfony/asset": "5.2.*",
+    "symfony/expression-language": "5.2.*",
+    "composer/package-versions-deprecated": "1.11.99.2",
+    "symfony/proxy-manager-bridge": "5.2.*",
+    "symfony/twig-bundle": "5.2.*"
   },
   "require-dev": {
     "doctrine/doctrine-fixtures-bundle": "^3.3.0",
