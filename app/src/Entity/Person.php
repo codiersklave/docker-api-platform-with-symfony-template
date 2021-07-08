@@ -2,8 +2,12 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Repository\PersonRepository;
+use Carbon\Carbon;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -14,70 +18,113 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="`person`")
  */
 #[ApiResource(
-    collectionOperations: ["get", "post"],
+    collectionOperations: [
+        "get" => [
+            "normalization_context" => ["groups" => "people_listing:read-list"]
+        ],
+        "post",
+    ],
     itemOperations: ["get", "put", "delete"],
+    denormalizationContext: ["groups" => ["people_listing:write"]],
     normalizationContext: ["groups" => ["people_listing:read"]]
 )]
+#[ApiFilter(BooleanFilter::class, "isActive")]
+#[ApiFilter(SearchFilter::class, properties: ["familyName" => "partial", "birthName" => "partial"])]
 class Person extends AbstractEntity
 {
     const GENDERS = ['female', 'male'];
 
     /**
+     * Family name (i.e. the last name of a person).
+     *
      * @ORM\Column(name="`family_name`", type="string", length=64)
      */
     #[Assert\NotNull]
     #[Assert\Length(min: 1, max: 64)]
-    #[Groups(["people_listing:read"])]
+    #[Groups(["people_listing:read", "people_listing:write", "people_listing:read-list"])]
     private string $familyName;
 
     /**
+     * Given name (i.e. the first name of a person).
+     *
      * @ORM\Column(name="`given_name`", type="string", length=64, nullable=true)
      */
     #[Assert\Length(min: 1, max: 64)]
-    #[Groups(["people_listing:read"])]
+    #[Groups(["people_listing:read", "people_listing:write", "people_listing:read-list"])]
     private ?string $givenName;
 
     /**
+     * An additional name for a Person, can be used for a middle name.
+     *
      * @ORM\Column(name="`additional_name`", type="string", length=64, nullable=true)
      */
     #[Assert\Length(min: 1, max: 64)]
-    #[Groups(["people_listing:read"])]
+    #[Groups(["people_listing:read", "people_listing:write"])]
     private ?string $additionalName;
 
     /**
+     * The person's gender. Can be either 'male' or 'female'. Leave empty (null), if none applies.
+     *
      * @ORM\Column(name="`gender`", type="string", length=6, nullable=true)
      */
     #[Assert\Choice(choices: Person::GENDERS)]
-    #[Groups(["people_listing:read"])]
+    #[Groups(["people_listing:read", "people_listing:write"])]
     private ?string $gender;
 
     /**
+     * An honorific prefix preceding a Person's name such as Dr/Mrs/Mr.
+     *
      * @ORM\Column(name="`honorific_prefix`", type="string", length=64, nullable=true)
      */
     #[Assert\Length(min: 1, max: 64)]
-    #[Groups(["people_listing:read"])]
+    #[Groups(["people_listing:read", "people_listing:write"])]
     private ?string $honorificPrefix;
 
     /**
+     * An honorific suffix following a Person's name such as M.D. /PhD/MSCSW.
+     *
      * @ORM\Column(name="`honorific_suffix`", type="string", length=64, nullable=true)
      */
     #[Assert\Length(min: 1, max: 64)]
-    #[Groups(["people_listing:read"])]
+    #[Groups(["people_listing:read", "people_listing:write"])]
     private ?string $honorificSuffix;
 
     /**
+     * Date of birth.
+     *
      * @ORM\Column(name="`birth_date`", type="date", nullable=true)
      */
     #[Assert\Type("DateTime")]
-    #[Groups(["people_listing:read"])]
+    #[Groups(["people_listing:read", "people_listing:write"])]
     private ?DateTime $birthDate;
 
     /**
+     * The person's name at birth.
+     *
      * @ORM\Column(name="`birth_name`", type="string", length=64, nullable=true)
      */
     #[Assert\Length(min: 1, max: 64)]
-    #[Groups(["people_listing:read"])]
+    #[Groups(["people_listing:read", "people_listing:write"])]
     private ?string $birthName;
+
+    /**
+     * Whether or not the person is active.
+     *
+     * @ORM\Column(name="`is_active`", type="boolean")
+     */
+    #[Assert\NotNull]
+    #[Assert\Type("boolean")]
+    #[Groups(["people_listing:read", "people_listing:write", "people_listing:read-list"])]
+    private bool $isActive = true;
+
+    /**
+     * @return int|null
+     */
+    #[Groups(["people_listing:read", "people_listing:read-list"])]
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     /**
      * @return string
@@ -221,5 +268,63 @@ class Person extends AbstractEntity
     {
         $this->birthName = $birthName;
         return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsActive(): bool
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param bool $isActive
+     * @return Person
+     */
+    public function setIsActive(bool $isActive): Person
+    {
+        $this->isActive = $isActive;
+        return $this;
+    }
+
+    /**
+     * @return DateTime|null
+     */
+    #[Groups(["people_listing:read"])]
+    public function getCreatedAt(): ?DateTime
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * The time that passed since the entity's creation in a human-readable format.
+     *
+     * @return string|null
+     */
+    #[Groups(["people_listing:read"])]
+    public function getCreatedAtAgo(): ?string
+    {
+        return Carbon::instance($this->getCreatedAt())->diffForHumans();
+    }
+
+    /**
+     * @return DateTime|null
+     */
+    #[Groups(["people_listing:read"])]
+    public function getUpdatedAt(): ?DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * The time that passed since the entity's last update in a human-readable format.
+     *
+     * @return string|null
+     */
+    #[Groups(["people_listing:read"])]
+    public function getUpdatedAtAgo(): ?string
+    {
+        return Carbon::instance($this->getCreatedAt())->diffForHumans();
     }
 }

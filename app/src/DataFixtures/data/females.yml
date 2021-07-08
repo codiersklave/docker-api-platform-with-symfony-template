@@ -6,6 +6,7 @@ person-clementi-marillin:
         gender: "female"
         birthDate: "1999-04-14"
         birthName: "Gilbey"
+        isActive: true
 person-doumic-almire:
     data:
         familyName: "Doumic"
@@ -13,12 +14,14 @@ person-doumic-almire:
         gender: "female"
         birthDate: "2000-05-10"
         birthName: "Pactat"
+        isActive: true
 person-warrack-britte:
     data:
         familyName: "Warrack"
         givenName: "Britte"
         gender: "female"
         birthDate: "1958-10-14"
+        isActive: false
 person-dryden-klarika:
     data:
         familyName: "Dryden"
@@ -26,22 +29,26 @@ person-dryden-klarika:
         gender: "female"
         honorificPrefix: "Dr."
         birthDate: "1980-06-25"
+        isActive: true
 person-coade-jeannine:
     data:
         familyName: "Coade"
         givenName: "Jeannine"
         gender: "female"
+        isActive: false
 person-onthank-annmarie:
     data:
         familyName: "Onthank"
         givenName: "Annmarie"
         gender: "female"
         birthDate: "1983-09-11"
+        isActive: true
 person-cormode-katrine:
     data:
         familyName: "Cormode"
         givenName: "Katrine"
         gender: "female"
+        isActive: true
 person-danis-jacquelyn:
     data:
         familyName: "Danis"
@@ -49,12 +56,14 @@ person-danis-jacquelyn:
         gender: "female"
         birthDate: "1947-08-27"
         birthName: "Cattrell"
+        isActive: true
 person-fewlass-lucie:
     data:
         familyName: "Fewlass"
         givenName: "Lucie"
         gender: "female"
         birthDate: "1999-04-14"
+        isActive: false
 person-andren-cecil:
     data:
         familyName: "Andren"
@@ -63,42 +72,49 @@ person-andren-cecil:
         additionalName: "Guglielma"
         honorificPrefix: "Prof."
         birthDate: "1975-11-23"
+        isActive: true
 person-airton-dyane:
     data:
         familyName: "Airton"
         givenName: "Dyane"
         gender: "female"
         birthName: "Kramer"
+        isActive: true
 person-houtbie-berti:
     data:
         familyName: "Houtbie"
         givenName: "Berti"
         gender: "female"
         birthName: "Iacomettii"
+        isActive: true
 person-poynter-starla:
     data:
         familyName: "Poynter"
         givenName: "Starla"
         gender: "female"
         birthName: "Kinnie"
+        isActive: true
 person-stelfox-jerrylee:
     data:
         familyName: "Stelfox"
         givenName: "Jerrylee"
         gender: "female"
         birthDate: "1985-12-14"
+        isActive: false
 person-tolputt-charis:
     data:
         familyName: "Tolputt"
         givenName: "Charis"
         gender: "female"
         birthDate: "1959-09-29"
+        isActive: false
 person-cockle-mozelle:
     data:
         familyName: "Cockle"
         givenName: "Mozelle"
         gender: "female"
         birthDate: "1954-05-17"
+        isActive: true
 person-winterburn-ema:
     data:
         familyName: "Winterburn"
@@ -106,21 +122,25 @@ person-winterburn-ema:
         gender: "female"
         additionalName: "Estell"
         birthDate: "1988-01-10"
+        isActive: true
 person-mayling-rubi:
     data:
         familyName: "Mayling"
         givenName: "Rubi"
         gender: "female"
         birthName: "Jaspar"
+        isActive: true
 person-mellor-deanne:
     data:
         familyName: "Mellor"
         givenName: "Deanne"
         additionalName: "Audra"
         gender: "female"
+        isActive: false
 person-rossegger-stefanie:
     data:
         familyName: "Roßegger"
         givenName: "Stefanie"
         gender: "female"
         birthDate: "1982-09-13"
+        isActive: true

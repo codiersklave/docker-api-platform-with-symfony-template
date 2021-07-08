@@ -4,6 +4,7 @@ person-plenderleith-barthel:
         givenName: "Barthel"
         gender: "male"
         birthDate: "1959-01-11"
+        isActive: false
 person-bertomieu-merill:
     data:
         familyName: "Bertomieu"
@@ -11,6 +12,7 @@ person-bertomieu-merill:
         gender: "male"
         honorificPrefix: "Prof."
         birthDate: "1982-09-17"
+        isActive: true
 person-mooring-jedidiah:
     data:
         familyName: "Mooring"
@@ -18,12 +20,14 @@ person-mooring-jedidiah:
         gender: "male"
         honorificSuffix: "M.A."
         birthDate: "1930-07-29"
+        isActive: true
 person-talloe-deck:
     data:
         familyName: "Talloe"
         givenName: "Deck"
         gender: "male"
         birthDate: "1963-06-21"
+        isActive: true
 person-yell-archer:
     data:
         familyName: "Yell"
@@ -31,6 +35,7 @@ person-yell-archer:
         gender: "male"
         honorificPrefix: "Dr."
         birthDate: "1992-03-15"
+        isActive: true
 person-michin-maurits:
     data:
         familyName: "Michin"
@@ -38,12 +43,14 @@ person-michin-maurits:
         gender: "male"
         honorificPrefix: "Dr."
         birthDate: "1943-10-28"
+        isActive: true
 person-betton-hieronymus:
     data:
         familyName: "Betton"
         givenName: "Hieronymus"
         additionalName: "Worthy"
         gender: "male"
+        isActive: false
 person-epsley-sax:
     data:
         familyName: "Epsley"
@@ -51,24 +58,28 @@ person-epsley-sax:
         additionalName: "Toddy"
         gender: "male"
         birthDate: "1982-08-19"
+        isActive: false
 person-lantuffe-andre:
     data:
         familyName: "Lantuffe"
         givenName: "Andre"
         gender: "male"
         birthDate: "1993-09-01"
+        isActive: true
 person-tivers-spike:
     data:
         familyName: "Tivers"
         givenName: "Spike"
         gender: "male"
         birthDate: "2003-12-27"
+        isActive: true
 person-rimell-vaughn:
     data:
         familyName: "Rimell"
         givenName: "Vaughn"
         gender: "male"
         birthDate: "1986-03-12"
+        isActive: true
 person-huckfield-oates:
     data:
         familyName: "Huckfield"
@@ -76,23 +87,27 @@ person-huckfield-oates:
         additionalName: "Devlin"
         gender: "male"
         birthDate: "1943-07-19"
+        isActive: true
 person-bausmann-zerk:
     data:
         familyName: "Bausmann"
         givenName: "Zerk"
         gender: "male"
         birthDate: "1998-04-30"
+        isActive: false
 person-snary-arturo:
     data:
         familyName: "Snary"
         givenName: "Arturo"
         gender: "male"
+        isActive: false
 person-snoxill-sheffie:
     data:
         familyName: "Snoxill"
         givenName: "Sheffie"
         gender: "male"
         birthDate: "1960-08-23"
+        isActive: true
 person-troy-zackariah:
     data:
         familyName: "Troy"
@@ -100,18 +115,21 @@ person-troy-zackariah:
         additionalName: "Frasier"
         gender: "male"
         birthDate: "1982-08-13"
+        isActive: false
 person-wontner-billie:
     data:
         familyName: "Wontner"
         givenName: "Billie"
         gender: "male"
         birthDate: "1968-09-17"
+        isActive: true
 person-stuffins-cordell:
     data:
         familyName: "Stuffins"
         givenName: "Cordell"
         gender: "male"
         additionalName: "Mervin"
+        isActive: true
 person-cowper-hercule:
     data:
         familyName: "Cowper"
@@ -119,9 +137,11 @@ person-cowper-hercule:
         gender: "male"
         honorificPrefix: "Prof."
         birthDate: "1935-10-21"
+        isActive: true
 person-serbe-alexander:
     data:
         familyName: "Serbe"
         givenName: "Alexander"
         gender: "male"
         birthDate: "1974-02-02"
+        isActive: true
