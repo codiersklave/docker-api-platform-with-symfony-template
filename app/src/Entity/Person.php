@@ -19,12 +19,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 #[ApiResource(
     collectionOperations: [
-        "get" => [
-            "normalization_context" => ["groups" => "people_listing:read-list"]
-        ],
+        "get" => ["normalization_context" => ["groups" => "people_listing:read-list"]],
         "post",
     ],
-    itemOperations: ["get", "put", "delete"],
+    itemOperations: ["get", "put"],
     denormalizationContext: ["groups" => ["people_listing:write"]],
     normalizationContext: ["groups" => ["people_listing:read"]]
 )]
