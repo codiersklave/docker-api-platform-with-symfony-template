@@ -1,0 +1,126 @@
+person-clementi-marillin:
+    data:
+        familyName: "Clementi"
+        givenName: "Marillin"
+        additionalName: "Gabie"
+        gender: "female"
+        birthDate: "1999-04-14"
+        birthName: "Gilbey"
+person-doumic-almire:
+    data:
+        familyName: "Doumic"
+        givenName: "Almire"
+        gender: "female"
+        birthDate: "2000-05-10"
+        birthName: "Pactat"
+person-warrack-britte:
+    data:
+        familyName: "Warrack"
+        givenName: "Britte"
+        gender: "female"
+        birthDate: "1958-10-14"
+person-dryden-klarika:
+    data:
+        familyName: "Dryden"
+        givenName: "Klarika"
+        gender: "female"
+        honorificPrefix: "Dr."
+        birthDate: "1980-06-25"
+person-coade-jeannine:
+    data:
+        familyName: "Coade"
+        givenName: "Jeannine"
+        gender: "female"
+person-onthank-annmarie:
+    data:
+        familyName: "Onthank"
+        givenName: "Annmarie"
+        gender: "female"
+        birthDate: "1983-09-11"
+person-cormode-katrine:
+    data:
+        familyName: "Cormode"
+        givenName: "Katrine"
+        gender: "female"
+person-danis-jacquelyn:
+    data:
+        familyName: "Danis"
+        givenName: "Jacquelyn"
+        gender: "female"
+        birthDate: "1947-08-27"
+        birthName: "Cattrell"
+person-fewlass-lucie:
+    data:
+        familyName: "Fewlass"
+        givenName: "Lucie"
+        gender: "female"
+        birthDate: "1999-04-14"
+person-andren-cecil:
+    data:
+        familyName: "Andren"
+        givenName: "Cecil"
+        gender: "female"
+        additionalName: "Guglielma"
+        honorificPrefix: "Prof."
+        birthDate: "1975-11-23"
+person-airton-dyane:
+    data:
+        familyName: "Airton"
+        givenName: "Dyane"
+        gender: "female"
+        birthName: "Kramer"
+person-houtbie-berti:
+    data:
+        familyName: "Houtbie"
+        givenName: "Berti"
+        gender: "female"
+        birthName: "Iacomettii"
+person-poynter-starla:
+    data:
+        familyName: "Poynter"
+        givenName: "Starla"
+        gender: "female"
+        birthName: "Kinnie"
+person-stelfox-jerrylee:
+    data:
+        familyName: "Stelfox"
+        givenName: "Jerrylee"
+        gender: "female"
+        birthDate: "1985-12-14"
+person-tolputt-charis:
+    data:
+        familyName: "Tolputt"
+        givenName: "Charis"
+        gender: "female"
+        birthDate: "1959-09-29"
+person-cockle-mozelle:
+    data:
+        familyName: "Cockle"
+        givenName: "Mozelle"
+        gender: "female"
+        birthDate: "1954-05-17"
+person-winterburn-ema:
+    data:
+        familyName: "Winterburn"
+        givenName: "Ema"
+        gender: "female"
+        additionalName: "Estell"
+        birthDate: "1988-01-10"
+person-mayling-rubi:
+    data:
+        familyName: "Mayling"
+        givenName: "Rubi"
+        gender: "female"
+        birthName: "Jaspar"
+person-mellor-deanne:
+    data:
+        familyName: "Mellor"
+        givenName: "Deanne"
+        additionalName: "Audra"
+        gender: "female"
+person-rossegger-stefanie:
+    data:
+        familyName: "Roßegger"
+        givenName: "Stefanie"
+        gender: "female"
+        birthDate: "1982-09-13"

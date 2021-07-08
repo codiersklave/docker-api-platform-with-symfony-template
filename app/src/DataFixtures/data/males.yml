@@ -1,0 +1,127 @@
+person-plenderleith-barthel:
+    data:
+        familyName: "Plenderleith"
+        givenName: "Barthel"
+        gender: "male"
+        birthDate: "1959-01-11"
+person-bertomieu-merill:
+    data:
+        familyName: "Bertomieu"
+        givenName: "Merill"
+        gender: "male"
+        honorificPrefix: "Prof."
+        birthDate: "1982-09-17"
+person-mooring-jedidiah:
+    data:
+        familyName: "Mooring"
+        givenName: "Jedidiah"
+        gender: "male"
+        honorificSuffix: "M.A."
+        birthDate: "1930-07-29"
+person-talloe-deck:
+    data:
+        familyName: "Talloe"
+        givenName: "Deck"
+        gender: "male"
+        birthDate: "1963-06-21"
+person-yell-archer:
+    data:
+        familyName: "Yell"
+        givenName: "Archer"
+        gender: "male"
+        honorificPrefix: "Dr."
+        birthDate: "1992-03-15"
+person-michin-maurits:
+    data:
+        familyName: "Michin"
+        givenName: "Maurits"
+        gender: "male"
+        honorificPrefix: "Dr."
+        birthDate: "1943-10-28"
+person-betton-hieronymus:
+    data:
+        familyName: "Betton"
+        givenName: "Hieronymus"
+        additionalName: "Worthy"
+        gender: "male"
+person-epsley-sax:
+    data:
+        familyName: "Epsley"
+        givenName: "Sax"
+        additionalName: "Toddy"
+        gender: "male"
+        birthDate: "1982-08-19"
+person-lantuffe-andre:
+    data:
+        familyName: "Lantuffe"
+        givenName: "Andre"
+        gender: "male"
+        birthDate: "1993-09-01"
+person-tivers-spike:
+    data:
+        familyName: "Tivers"
+        givenName: "Spike"
+        gender: "male"
+        birthDate: "2003-12-27"
+person-rimell-vaughn:
+    data:
+        familyName: "Rimell"
+        givenName: "Vaughn"
+        gender: "male"
+        birthDate: "1986-03-12"
+person-huckfield-oates:
+    data:
+        familyName: "Huckfield"
+        givenName: "Oates"
+        additionalName: "Devlin"
+        gender: "male"
+        birthDate: "1943-07-19"
+person-bausmann-zerk:
+    data:
+        familyName: "Bausmann"
+        givenName: "Zerk"
+        gender: "male"
+        birthDate: "1998-04-30"
+person-snary-arturo:
+    data:
+        familyName: "Snary"
+        givenName: "Arturo"
+        gender: "male"
+person-snoxill-sheffie:
+    data:
+        familyName: "Snoxill"
+        givenName: "Sheffie"
+        gender: "male"
+        birthDate: "1960-08-23"
+person-troy-zackariah:
+    data:
+        familyName: "Troy"
+        givenName: "Zackariah"
+        additionalName: "Frasier"
+        gender: "male"
+        birthDate: "1982-08-13"
+person-wontner-billie:
+    data:
+        familyName: "Wontner"
+        givenName: "Billie"
+        gender: "male"
+        birthDate: "1968-09-17"
+person-stuffins-cordell:
+    data:
+        familyName: "Stuffins"
+        givenName: "Cordell"
+        gender: "male"
+        additionalName: "Mervin"
+person-cowper-hercule:
+    data:
+        familyName: "Cowper"
+        givenName: "Hercule"
+        gender: "male"
+        honorificPrefix: "Prof."
+        birthDate: "1935-10-21"
+person-serbe-alexander:
+    data:
+        familyName: "Serbe"
+        givenName: "Alexander"
+        gender: "male"
+        birthDate: "1974-02-02"
