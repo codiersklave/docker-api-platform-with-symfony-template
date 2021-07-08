@@ -1,9 +1,9 @@
 {
-  "name": "codiersklave/glenfiddich",
-  "description": "Empty Symfony 5 project (based on PHP 8 / MySQL 8 on Apache 2)",
+  "name": "codiersklave/highlandpark",
+  "description": "Symfony/API Platform Test Project",
   "type": "project",
   "readme": "README.md",
-  "license": "proprietary",
+  "license": "MIT License",
   "authors": [
     {
       "name": "Alexander Serbe",
