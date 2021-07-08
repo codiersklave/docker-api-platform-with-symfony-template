@@ -6,13 +6,18 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\PersonRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PersonRepository::class)
  * @ORM\Table(name="`person`")
  */
-#[ApiResource]
+#[ApiResource(
+    collectionOperations: ["get", "post"],
+    itemOperations: ["get", "put", "delete"],
+    normalizationContext: ["groups" => ["people_listing:read"]]
+)]
 class Person extends AbstractEntity
 {
     const GENDERS = ['female', 'male'];
@@ -22,48 +27,56 @@ class Person extends AbstractEntity
      */
     #[Assert\NotNull]
     #[Assert\Length(min: 1, max: 64)]
+    #[Groups(["people_listing:read"])]
     private string $familyName;
 
     /**
      * @ORM\Column(name="`given_name`", type="string", length=64, nullable=true)
      */
     #[Assert\Length(min: 1, max: 64)]
+    #[Groups(["people_listing:read"])]
     private ?string $givenName;
 
     /**
      * @ORM\Column(name="`additional_name`", type="string", length=64, nullable=true)
      */
     #[Assert\Length(min: 1, max: 64)]
+    #[Groups(["people_listing:read"])]
     private ?string $additionalName;
 
     /**
      * @ORM\Column(name="`gender`", type="string", length=6, nullable=true)
      */
     #[Assert\Choice(choices: Person::GENDERS)]
+    #[Groups(["people_listing:read"])]
     private ?string $gender;
 
     /**
      * @ORM\Column(name="`honorific_prefix`", type="string", length=64, nullable=true)
      */
     #[Assert\Length(min: 1, max: 64)]
+    #[Groups(["people_listing:read"])]
     private ?string $honorificPrefix;
 
     /**
      * @ORM\Column(name="`honorific_suffix`", type="string", length=64, nullable=true)
      */
     #[Assert\Length(min: 1, max: 64)]
+    #[Groups(["people_listing:read"])]
     private ?string $honorificSuffix;
 
     /**
      * @ORM\Column(name="`birth_date`", type="date", nullable=true)
      */
     #[Assert\Type("DateTime")]
+    #[Groups(["people_listing:read"])]
     private ?DateTime $birthDate;
 
     /**
      * @ORM\Column(name="`birth_name`", type="string", length=64, nullable=true)
      */
     #[Assert\Length(min: 1, max: 64)]
+    #[Groups(["people_listing:read"])]
     private ?string $birthName;
 
     /**
