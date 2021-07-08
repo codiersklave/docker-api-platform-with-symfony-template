@@ -8,7 +8,6 @@ use App\Entity\DatabaseEntityInterface;
 use DateTime;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
 use Exception;
-use Ramsey\Uuid\Uuid;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -26,17 +25,17 @@ class EntityLifecycleListener
      * @var UserPasswordEncoderInterface $passwordEncoder
      */
     private UserPasswordEncoderInterface $passwordEncoder;
-    
+
     /**
      * @var UserInterface|string $user
      */
     private $user;
-    
+
     /**
      * @var ValidatorInterface $validator
      */
     private ValidatorInterface $validator;
-    
+
     /**
      * @param TokenStorageInterface $tokenStorage Used to retrieve the current user.
      * @param UserPasswordEncoderInterface $passwordEncoder Used to encode the user's password.
@@ -49,14 +48,14 @@ class EntityLifecycleListener
     ) {
         $this->validator = $validator;
         $this->passwordEncoder = $passwordEncoder;
-        
+
         $token = $tokenStorage->getToken();
-        
+
         if (!empty($token)) {
             $this->user = $token->getUser();
         }
     }
-    
+
     /**
      * @param DatabaseEntityInterface $entity
      * @throws Exception
@@ -64,13 +63,13 @@ class EntityLifecycleListener
     private function validateEntity(DatabaseEntityInterface $entity)
     {
         $errors = $this->validator->validate($entity);
-        
+
         if (count($errors) > 0) {
             $errorString = (string) $errors;
             throw new Exception('Validation errors: ' . $errorString);
         }
     }
-    
+
     /**
      * @param LifecycleEventArgs $args
      * @throws Exception
@@ -78,15 +77,7 @@ class EntityLifecycleListener
     public function prePersist(LifecycleEventArgs $args)
     {
         $entity = $args->getObject();
-        
-        if (
-            method_exists($entity, 'getExternalId') &&
-            method_exists($entity, 'setExternalId') &&
-            $entity->getExternalId() === null
-        ) {
-            $entity->setExternalId(Uuid::uuid4()->toString());
-        }
-        
+
         if (
             method_exists($entity, 'getCreatedAt') &&
             method_exists($entity, 'setCreatedAt') &&
@@ -94,7 +85,7 @@ class EntityLifecycleListener
         ) {
             $entity->setCreatedAt(new DateTime());
         }
-        
+
         if (
             method_exists($entity, 'getUpdatedAt') &&
             method_exists($entity, 'setUpdatedAt') &&
@@ -102,7 +93,7 @@ class EntityLifecycleListener
         ) {
             $entity->setUpdatedAt(new DateTime());
         }
-        
+
         if (
             $this->user !== null &&
             $this->user instanceof UserInterface &&
@@ -112,7 +103,7 @@ class EntityLifecycleListener
         ) {
             $entity->setCreatedBy($this->user);
         }
-        
+
         if (
             $this->user !== null &&
             $this->user instanceof UserInterface &&
@@ -122,16 +113,16 @@ class EntityLifecycleListener
         ) {
             $entity->setUpdatedBy($this->user);
         }
-        
+
         if ($entity instanceof DatabaseEntityInterface) {
             $this->validateEntity($entity);
         }
-        
+
         if ($entity instanceof UserInterface) {
             $this->encodePassword($entity);
         }
     }
-    
+
     /**
      * @param LifecycleEventArgs $args
      * @throws Exception
@@ -139,19 +130,11 @@ class EntityLifecycleListener
     public function preUpdate(LifecycleEventArgs $args)
     {
         $entity = $args->getObject();
-        
-        if (
-            method_exists($entity, 'setExternalId') &&
-            method_exists($entity, 'getExternalId') &&
-            $entity->getExternalId() === null
-        ) {
-            $entity->setExternalId(Uuid::uuid4()->toString());
-        }
-        
+
         if (method_exists($entity, 'setUpdatedAt')) {
             $entity->setUpdatedAt(new DateTime());
         }
-        
+
         if (
             $this->user !== null &&
             $this->user instanceof UserInterface &&
@@ -159,12 +142,12 @@ class EntityLifecycleListener
         ) {
             $entity->setUpdatedBy($this->user);
         }
-        
+
         if ($entity instanceof DatabaseEntityInterface) {
             $this->validateEntity($entity);
         }
     }
-    
+
     /**
      * @param UserInterface $user
      */
@@ -172,7 +155,7 @@ class EntityLifecycleListener
     {
         if (method_exists($user, 'getPlainPassword') && method_exists($user, 'setPassword')) {
             $plainPassword = $user->getPlainPassword();
-            
+
             if (!empty($plainPassword)) {
                 $encoded = $this->passwordEncoder->encodePassword($user, $plainPassword);
                 $user->setPassword($encoded);

@@ -19,28 +19,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 abstract class AbstractEntity implements DatabaseEntityInterface
 {
     /**
-     * The internal (i.e. sequential, numeric) ID of the entity in the database. The internal ID should only be used in
-     * internal routes (e.g. in admin routes).
-     *
-     * @var int|null
-     *
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(name="`internal_id`", type="integer", nullable=true)
+     * @ORM\Column(name="`id`", type="integer", nullable=true)
      */
-    protected ?int $internalId = null;
-    
-    /**
-     * The external (i.e. non-sequential, non-numeric) ID of the entity. The external ID should be used in all public
-     * routes.
-     *
-     * @var string|null
-     *
-     * @ORM\Column(name="`external_id`", type="string", length=36, nullable=true, unique=true)
-     * @Assert\Length(min=1, max=36)
-     */
-    protected ?string $externalId = null;
-    
+    protected ?int $id = null;
+
     /**
      * The creation date of the entity.
      *
@@ -50,7 +34,7 @@ abstract class AbstractEntity implements DatabaseEntityInterface
      * @Assert\Type(type="DateTime")
      */
     protected ?DateTime $createdAt = null;
-    
+
     /**
      * The date the entity has last been updated.
      *
@@ -60,32 +44,15 @@ abstract class AbstractEntity implements DatabaseEntityInterface
      * @Assert\Type(type="Datetime")
      */
     protected ?DateTime $updatedAt = null;
-    
+
     /**
      * @inheritDoc
      */
-    public function getInternalId(): ?int
+    public function getId(): ?int
     {
-        return $this->internalId;
+        return $this->id;
     }
-    
-    /**
-     * @inheritDoc
-     */
-    public function getExternalId(): ?string
-    {
-        return $this->externalId;
-    }
-    
-    /**
-     * @inheritDoc
-     */
-    public function setExternalId(?string $externalId): self
-    {
-        $this->externalId = $externalId;
-        return $this;
-    }
-    
+
     /**
      * @inheritDoc
      */
@@ -93,7 +60,7 @@ abstract class AbstractEntity implements DatabaseEntityInterface
     {
         return $this->createdAt;
     }
-    
+
     /**
      * @inheritDoc
      */
@@ -102,7 +69,7 @@ abstract class AbstractEntity implements DatabaseEntityInterface
         $this->createdAt = $createdAt;
         return $this;
     }
-    
+
     /**
      * @inheritDoc
      */
@@ -110,7 +77,7 @@ abstract class AbstractEntity implements DatabaseEntityInterface
     {
         return $this->updatedAt;
     }
-    
+
     /**
      * @inheritDoc
      */
