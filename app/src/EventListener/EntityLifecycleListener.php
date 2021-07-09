@@ -29,7 +29,7 @@ class EntityLifecycleListener
     /**
      * @var UserInterface|string $user
      */
-    private $user;
+    private UserInterface|string $user;
 
     /**
      * @var ValidatorInterface $validator
