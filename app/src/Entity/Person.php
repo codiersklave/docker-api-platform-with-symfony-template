@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
 use App\Repository\PersonRepository;
 use Carbon\Carbon;
 use DateTime;
@@ -22,12 +23,16 @@ use Symfony\Component\Validator\Constraints as Assert;
         "get" => ["normalization_context" => ["groups" => "people_listing:read-list"]],
         "post",
     ],
-    itemOperations: ["get", "put"],
+    itemOperations: ["get", "put", "delete"],
+    attributes: [
+        "pagination_items_per_page" => 5,
+    ],
     denormalizationContext: ["groups" => ["people_listing:write"]],
     normalizationContext: ["groups" => ["people_listing:read"]]
 )]
 #[ApiFilter(BooleanFilter::class, "isActive")]
 #[ApiFilter(SearchFilter::class, properties: ["familyName" => "partial", "birthName" => "partial"])]
+#[ApiFilter(PropertyFilter::class)]
 class Person extends AbstractEntity
 {
     const GENDERS = ['female', 'male'];
