@@ -27,9 +27,9 @@ class EntityLifecycleListener
     private UserPasswordEncoderInterface $passwordEncoder;
 
     /**
-     * @var UserInterface|string $user
+     * @var UserInterface|string|null $user
      */
-    private UserInterface|string $user;
+    private UserInterface|string|null $user;
 
     /**
      * @var ValidatorInterface $validator
@@ -48,6 +48,7 @@ class EntityLifecycleListener
     ) {
         $this->validator = $validator;
         $this->passwordEncoder = $passwordEncoder;
+        $this->user = null;
 
         $token = $tokenStorage->getToken();
 
