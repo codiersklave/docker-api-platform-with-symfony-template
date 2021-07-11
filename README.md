@@ -2,10 +2,10 @@
 
 * Docker
 * Apache 2
-* PHP 8
-* MySQL 8
-* Symfony 5
-* API Platform
+* PHP 8.0-apache
+* MySQL 8.0
+* Symfony 5.2.11
+* API Platform 2.6.5
 
 ## Description
 
