@@ -1,4 +1,14 @@
 api_platform:
+    title: 'Highland Park'
+    description: 'API Platform template with examples'
+    version: '1.0.0'
+    openapi:
+        contact:
+            name: 'Alexander Serbe'
+            email: 'codiersklave@yahoo.de'
+        license:
+            name: 'MIT License'
+            url: 'https://mit-license.org/'
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
     patch_formats:
