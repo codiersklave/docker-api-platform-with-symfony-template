@@ -9,6 +9,11 @@
       "name": "Alexander Serbe",
       "email": "codiersklave@yahoo.de",
       "role": "Developer"
+    },
+    {
+      "name": "Michael Kissinger",
+      "email": "aquakami2005@googlemail.com",
+      "role": "developer"
     }
   ],
   "require": {
@@ -43,7 +48,8 @@
     "symfony/proxy-manager-bridge": "5.2.*",
     "symfony/twig-bundle": "5.2.*",
     "netresearch/jsonmapper": "^4.0",
-    "ramsey/uuid": "^4.1"
+    "ramsey/uuid": "^4.1",
+    "nesbot/carbon": "^2.50"
   },
   "require-dev": {
     "doctrine/doctrine-fixtures-bundle": "^3.3.0",
