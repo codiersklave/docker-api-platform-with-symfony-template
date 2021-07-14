@@ -8,45 +8,24 @@ use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * Abstract base class for database entities.
- *
- * @author Alexander Serbe <codiersklave@yahoo.de>
- * @author Michael Kissinger <aquakami2005@googlemail.com>
- *
- * @ORM\MappedSuperclass()
- */
+#[ORM\MappedSuperclass]
 abstract class AbstractEntity implements DatabaseEntityInterface
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(name="`id`", type="integer", nullable=true)
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: "AUTO")]
+    #[ORM\Column(name: "`id`", type: "integer", nullable: true)]
     protected ?int $id = null;
 
-    /**
-     * The creation date of the entity.
-     *
-     * @var DateTime|null
-     *
-     * @ORM\Column(name="`created_at`", type="datetime", nullable=true)
-     * @Assert\Type(type="DateTime")
-     */
+    #[ORM\Column(name: "`created_at`", type: "datetime", nullable: true)]
+    #[Assert\Type("DateTime")]
     protected ?DateTime $createdAt = null;
 
-    /**
-     * The date the entity has last been updated.
-     *
-     * @var DateTime|null
-     *
-     * @ORM\Column(name="`updated_at`", type="datetime", nullable=true)
-     * @Assert\Type(type="Datetime")
-     */
+    #[ORM\Column(name: "`updated_at`", type: "datetime", nullable: true)]
+    #[Assert\Type("DateTime")]
     protected ?DateTime $updatedAt = null;
 
     /**
-     * @inheritDoc
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -54,7 +33,7 @@ abstract class AbstractEntity implements DatabaseEntityInterface
     }
 
     /**
-     * @inheritDoc
+     * @return DateTime|null
      */
     public function getCreatedAt(): ?DateTime
     {
@@ -62,7 +41,8 @@ abstract class AbstractEntity implements DatabaseEntityInterface
     }
 
     /**
-     * @inheritDoc
+     * @param DateTime|null $createdAt
+     * @return $this
      */
     public function setCreatedAt(?DateTime $createdAt): self
     {
@@ -71,7 +51,7 @@ abstract class AbstractEntity implements DatabaseEntityInterface
     }
 
     /**
-     * @inheritDoc
+     * @return DateTime|null
      */
     public function getUpdatedAt(): ?DateTime
     {
@@ -79,7 +59,8 @@ abstract class AbstractEntity implements DatabaseEntityInterface
     }
 
     /**
-     * @inheritDoc
+     * @param DateTime|null $updatedAt
+     * @return $this
      */
     public function setUpdatedAt(?DateTime $updatedAt): self
     {

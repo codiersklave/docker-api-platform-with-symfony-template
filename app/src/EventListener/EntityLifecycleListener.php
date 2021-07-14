@@ -8,6 +8,7 @@ use App\Entity\DatabaseEntityInterface;
 use DateTime;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
 use Exception;
+use Stringable;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -29,7 +30,7 @@ class EntityLifecycleListener
     /**
      * @var UserInterface|string $user
      */
-    private $user;
+    private UserInterface|Stringable|string $user;
 
     /**
      * @var ValidatorInterface $validator
@@ -120,6 +121,9 @@ class EntityLifecycleListener
 
         if ($entity instanceof UserInterface) {
             $this->encodePassword($entity);
+            if (method_exists($entity, 'setRoles')) {
+                $entity->setRoles(['ROLE_USER']);
+            }
         }
     }
 
@@ -145,6 +149,10 @@ class EntityLifecycleListener
 
         if ($entity instanceof DatabaseEntityInterface) {
             $this->validateEntity($entity);
+        }
+
+        if ($entity instanceof UserInterface) {
+            $this->encodePassword($entity);
         }
     }
 
