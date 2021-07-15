@@ -34,6 +34,7 @@ class User extends AbstractEntity implements UserInterface
     #[ORM\Column(name: "`roles`", type: "json")]
     #[Assert\NotNull]
     #[Assert\Type("array")]
+    #[Groups(["user:read"])]
     private array $roles = [];
 
     #[ORM\Column(name: "`password`", type: "string", length: 255, nullable: true)]
@@ -43,6 +44,7 @@ class User extends AbstractEntity implements UserInterface
     private ?string $plainPassword;
 
     #[ORM\OneToMany(targetEntity: CheeseListing::class, mappedBy: "owner")]
+    #[Groups(["user:read"])]
     private iterable $cheeseListings;
 
     public function __construct()

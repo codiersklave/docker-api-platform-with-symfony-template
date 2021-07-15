@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace App\DataFixtures;
 
 use App\Entity\CheeseListing;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class CheeseListingFixture extends AbstractFixture
+class CheeseListingFixture extends AbstractFixture implements DependentFixtureInterface
 {
     protected function getEntityClass(): string
     {
@@ -17,6 +18,13 @@ class CheeseListingFixture extends AbstractFixture
     {
         return [
             'cheeses.csv',
+        ];
+    }
+
+    public function getDependencies(): array
+    {
+        return [
+            UserFixture::class,
         ];
     }
 }

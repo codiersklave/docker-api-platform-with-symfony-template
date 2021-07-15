@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
-use App\Entity\Person;
+use App\Entity\User;
 
-class PersonFixture extends AbstractFixture
+class UserFixture extends AbstractFixture
 {
     protected function getEntityClass(): string
     {
-        return Person::class;
+        return User::class;
     }
-    
+
     protected function getFixtureFiles(): array
     {
         return [
-            'people.yml',
+            'users.yml',
         ];
     }
 }

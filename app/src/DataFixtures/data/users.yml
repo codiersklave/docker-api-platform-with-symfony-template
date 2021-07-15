@@ -1,0 +1,21 @@
+user-alex:
+    data:
+        email: "codiersklave@yahoo.de"
+        username: "Alex"
+        roles:
+            - ROLE_SUPER_ADMIN
+        plainPassword: "secret!1234"
+user-test-1:
+    data:
+        email: "test1@test.com"
+        username: "Test1"
+        roles:
+            - ROLE_ADMIN
+        plainPassword: "secret!1234"
+user-test-2:
+    data:
+        email: "test2@test.com"
+        username: "Test2"
+        roles:
+            - ROLE_USER
+        plainPassword: "secret!1234"

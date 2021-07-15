@@ -20,7 +20,7 @@ final class Version20210713150617 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE cheese_listing ADD `owner_id` INT NOT NULL');
+        $this->addSql('ALTER TABLE cheese_listing ADD `owner_id` INT NOT NULL AFTER `id`');
         $this->addSql('ALTER TABLE cheese_listing ADD CONSTRAINT FK_356577D48FCB80A4 FOREIGN KEY (`owner_id`) REFERENCES `user` (`id`)');
         $this->addSql('CREATE INDEX IDX_356577D48FCB80A4 ON cheese_listing (`owner_id`)');
     }

@@ -33,6 +33,7 @@ class CheeseListing extends AbstractEntity
 {
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: "cheeseListings")]
     #[ORM\JoinColumn(name: "`owner_id`", referencedColumnName: "id", nullable: false)]
+    #[Groups(["cheese_listing:read", "cheese_listing:write"])]
     private User $owner;
 
     #[ORM\Column(name: "`title`", type: "string", length: 255)]
