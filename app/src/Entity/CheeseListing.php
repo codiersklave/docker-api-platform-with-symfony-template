@@ -20,10 +20,22 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: CheeseListingRepository::class)]
 #[ORM\Table(name: "`cheese_listing`")]
 #[ApiResource(
-    collectionOperations: ["get", "post"],
-    itemOperations: ["get", "patch"],
-    denormalizationContext: ["groups" => ["cheese_listing:write"]],
-    normalizationContext: ["groups" => ["cheese_listing:read"]]
+    collectionOperations: [
+        "get",
+        "post",
+    ],
+    itemOperations: [
+        "get" => [
+            "normalization_context" => ["groups" => ["cheese_listing:read", "cheese_listing:item:get"]]
+        ],
+        "patch",
+    ],
+    denormalizationContext: [
+        "groups" => ["cheese_listing:write"],
+    ],
+    normalizationContext: [
+        "groups" => ["cheese_listing:read"],
+    ]
 )]
 #[ApiFilter(BooleanFilter::class, properties: ["isPublished"])]
 #[ApiFilter(SearchFilter::class, properties: ["title" => "partial"])]
@@ -39,7 +51,7 @@ class CheeseListing extends AbstractEntity
     #[ORM\Column(name: "`title`", type: "string", length: 255)]
     #[Assert\NotBlank]
     #[Assert\Length(min: 1, max: 255)]
-    #[Groups(["cheese_listing:read", "cheese_listing:write"])]
+    #[Groups(["cheese_listing:read", "cheese_listing:write", "user:item:get"])]
     private string $title;
 
     #[ORM\Column(name: "`description`", type: "text", length: 255)]
@@ -50,20 +62,20 @@ class CheeseListing extends AbstractEntity
     #[ORM\Column(name: "`price`", type: "integer")]
     #[Assert\NotBlank]
     #[Assert\GreaterThanOrEqual(0)]
-    #[Groups(["cheese_listing:read", "cheese_listing:write"])]
+    #[Groups(["cheese_listing:read", "cheese_listing:write", "user:item:get"])]
     private int $price;
 
     #[ORM\Column(name: "`is_published`", type: "boolean")]
     #[Assert\NotNull]
     #[Assert\Type("boolean")]
-    #[Groups(["cheese_listing:read", "cheese_listing:write"])]
+    #[Groups(["cheese_listing:read", "cheese_listing:write", "user:item:get"])]
     private bool $published = false;
 
     /**
      * We override this method simply to be able to add it to a group.
      * @TODO: Find out if there is a better to do this...
      */
-    #[Groups(["cheese_listing:read"])]
+    #[Groups(["cheese_listing:read", "user:item:get"])]
     public function getId(): ?int
     {
         return parent::getId();

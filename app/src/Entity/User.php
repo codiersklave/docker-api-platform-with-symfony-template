@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -14,21 +17,32 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: "`user`")]
 #[ApiResource(
+    collectionOperations: [
+        "get",
+        "post",
+    ],
+    itemOperations: [
+        "get" => [
+            "normalization_context" => ["groups" => ["user:read", "user:item:get"]]
+        ],
+        "patch"
+    ],
     denormalizationContext: ["groups" => ["user:write"]],
     normalizationContext: ["groups" => ["user:read"]]
 )]
+#[ApiFilter(PropertyFilter::class)]
 class User extends AbstractEntity implements UserInterface
 {
     #[ORM\Column(name: "`email`", type: "string", length: 255, unique: true)]
     #[Assert\NotNull]
     #[Assert\Email]
-    #[Groups(["user:read", "user:write"])]
+    #[Groups(["user:read", "user:write", "cheese_listing:item:get"])]
     private string $email;
 
     #[ORM\Column(name: "`username`", type: "string", length: 255, unique: true)]
     #[Assert\NotNull]
     #[Assert\Length(min: 1, max: 255)]
-    #[Groups(["user:read", "user:write"])]
+    #[Groups(["user:read", "user:write", "cheese_listing:item:get", "cheese_listing:write"])]
     private string $username;
 
     #[ORM\Column(name: "`roles`", type: "json")]
@@ -41,10 +55,9 @@ class User extends AbstractEntity implements UserInterface
     #[Assert\Length(max: 255)]
     private ?string $password;
 
-    private ?string $plainPassword;
-
     #[ORM\OneToMany(targetEntity: CheeseListing::class, mappedBy: "owner")]
     #[Groups(["user:read"])]
+    #[ApiSubresource]
     private iterable $cheeseListings;
 
     public function __construct()
@@ -55,6 +68,7 @@ class User extends AbstractEntity implements UserInterface
     /**
      * @return int|null
      */
+    #[Groups(["user:read", "cheese_listing:item:get"])]
     public function getId(): ?int
     {
         return $this->id;
@@ -139,14 +153,6 @@ class User extends AbstractEntity implements UserInterface
     }
 
     /**
-     * @return string|null
-     */
-    public function getPlainPassword(): ?string
-    {
-        return $this->plainPassword;
-    }
-
-    /**
      * @param string|null $plainPassword
      * @return User
      */
@@ -168,7 +174,7 @@ class User extends AbstractEntity implements UserInterface
 
     public function eraseCredentials()
     {
-        $this->plainPassword = null;
+
     }
 
     /**
@@ -177,16 +183,6 @@ class User extends AbstractEntity implements UserInterface
     public function getCheeseListings(): iterable|ArrayCollection
     {
         return $this->cheeseListings;
-    }
-
-    /**
-     * @param ArrayCollection|iterable $cheeseListings
-     * @return $this
-     */
-    public function setCheeseListings(iterable|ArrayCollection $cheeseListings): self
-    {
-        $this->cheeseListings = $cheeseListings;
-        return $this;
     }
 
     /**
