@@ -42,7 +42,7 @@ class User extends AbstractEntity implements UserInterface
     #[ORM\Column(name: "`username`", type: "string", length: 255, unique: true)]
     #[Assert\NotNull]
     #[Assert\Length(min: 1, max: 255)]
-    #[Groups(["user:read", "user:write", "cheese_listing:item:get", "cheese_listing:write"])]
+    #[Groups(["user:read", "user:write", "cheese_listing:item:get"])]
     private string $username;
 
     #[ORM\Column(name: "`roles`", type: "json")]

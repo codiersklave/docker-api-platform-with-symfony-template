@@ -37,7 +37,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         "groups" => ["cheese_listing:read"],
     ]
 )]
-#[ApiFilter(BooleanFilter::class, properties: ["isPublished"])]
+#[ApiFilter(BooleanFilter::class, properties: ["published   "])]
 #[ApiFilter(SearchFilter::class, properties: ["title" => "partial"])]
 #[ApiFilter(RangeFilter::class, properties: ["price"])]
 #[ApiFilter(PropertyFilter::class)]
