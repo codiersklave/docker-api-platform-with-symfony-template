@@ -1,6 +1,6 @@
 # Highland Park
 
-_**API Platform Template** - Docker, Apache 2, PHP 8, MySQL 8, Symfony 5, API Platform 2._
+_**API Platform w/ Symfony Template** - Docker, Apache 2, PHP 8, MySQL 8, Symfony 5, API Platform 2._
 
 ---
 
