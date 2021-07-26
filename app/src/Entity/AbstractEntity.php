@@ -16,6 +16,10 @@ abstract class AbstractEntity implements DatabaseEntityInterface
     #[ORM\Column(name: "`id`", type: "integer", nullable: true)]
     protected ?int $id = null;
 
+    #[ORM\Column(name: "`identifier`", type: "string", length: 36, unique: true, nullable: true)]
+    #[Assert\Length(max: 36)]
+    protected ?string $identifier = null;
+
     #[ORM\Column(name: "`created_at`", type: "datetime", nullable: true)]
     #[Assert\Type("DateTime")]
     protected ?DateTime $createdAt = null;
@@ -30,6 +34,24 @@ abstract class AbstractEntity implements DatabaseEntityInterface
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getIdentifier(): ?string
+    {
+        return $this->identifier;
+    }
+
+    /**
+     * @param string|null $identifier
+     * @return AbstractEntity
+     */
+    public function setIdentifier(?string $identifier): AbstractEntity
+    {
+        $this->identifier = $identifier;
+        return $this;
     }
 
     /**

@@ -8,6 +8,7 @@ use App\Entity\DatabaseEntityInterface;
 use DateTime;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
 use Exception;
+use Ramsey\Uuid\Uuid;
 use Stringable;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -18,7 +19,6 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  * Event listener for Doctrine entity lifecycle events.
  *
  * @author Alexander Serbe <codiersklave@yahoo.de>
- * @author Michael Kissinger <aquakami2005@googlemail.com>
  */
 class EntityLifecycleListener
 {
@@ -81,6 +81,14 @@ class EntityLifecycleListener
         $entity = $args->getObject();
 
         if (
+            method_exists($entity, 'getIdentifier') &&
+            method_exists($entity, 'setIdentifier') &&
+            $entity->getIdentifier() === null
+        ) {
+            $entity->setIdentifier(Uuid::uuid4()->toString());
+        }
+
+        if (
             method_exists($entity, 'getCreatedAt') &&
             method_exists($entity, 'setCreatedAt') &&
             $entity->getCreatedAt() === null
@@ -135,6 +143,14 @@ class EntityLifecycleListener
     public function preUpdate(LifecycleEventArgs $args)
     {
         $entity = $args->getObject();
+
+        if (
+            method_exists($entity, 'getIdentifier') &&
+            method_exists($entity, 'setIdentifier') &&
+            $entity->getIdentifier() === null
+        ) {
+            $entity->setIdentifier(Uuid::uuid4()->toString());
+        }
 
         if (method_exists($entity, 'setUpdatedAt')) {
             $entity->setUpdatedAt(new DateTime());
