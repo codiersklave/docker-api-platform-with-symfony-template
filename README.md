@@ -1,11 +1,6 @@
-# Highland Park
+# API Platform with Symfony Template
 
-_**API Platform w/ Symfony Template** - Docker, Apache 2, PHP 8, MySQL 8, Symfony 5, API Platform 2._
-
----
-
-**Highland Park distillery is the northernmost single malt Scotch whisky distillery in Scotland, located in Kirkwall on 
-the Orkney Islands.**
+_Docker, Apache 2, PHP 8, MySQL 8, Symfony 5, API Platform 2._
 
 ## Description
 
