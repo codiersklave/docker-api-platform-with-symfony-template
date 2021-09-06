@@ -1,6 +1,5 @@
 api_platform:
-    title: 'Highland Park'
-    description: 'API Platform Template'
+    title: 'API Platform Template (with Symfony)'
     version: '1.0.0'
     openapi:
         contact:

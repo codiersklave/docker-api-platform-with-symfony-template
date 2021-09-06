@@ -1,7 +1,7 @@
 version: "3"
 services:
-    highlandpark_app:
-        container_name: highlandpark_app
+    api:
+        container_name: api
         build:
             context: .
             dockerfile: Dockerfile
@@ -10,16 +10,16 @@ services:
         ports:
             - "80:80"
         depends_on:
-            - highlandpark_db
-    highlandpark_db:
-        container_name: highlandpark_db
+            - db
+    db:
+        container_name: db
         image: mysql:8.0
         ports:
             - "3306:3306"
         environment:
             MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: highlandpark_db
-            MYSQL_USER: highlandpark
-            MYSQL_PASSWORD: highlandpark
+            MYSQL_DATABASE: project_db
+            MYSQL_USER: project_db
+            MYSQL_PASSWORD: project_db
         volumes:
             - ./data/:/var/lib/mysql
